@@ -452,12 +452,16 @@
                 </div>
                 <form id="ebookForm">
                     <div class="form-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
                         <label for="email">Your Email:</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="name">Your Name:</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="phone">Your Phone:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 62643 69990" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Message (Optional):</label>
@@ -503,8 +507,9 @@
         ebookForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const email = document.getElementById('email').value;
             const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
             const submitBtn = this.querySelector('.form-submit');
 
@@ -514,8 +519,9 @@
 
             // Create FormData for traditional form submission
             const formData = new FormData();
-            formData.append('email', email);
             formData.append('name', name);
+            formData.append('email', email);
+            formData.append('phone', phone);
             formData.append('message', message);
 
             // Submit to Formspree in background using fetch with no-cors
